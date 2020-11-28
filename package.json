@@ -33,7 +33,8 @@
     "luaparse",
     "interpreter",
     "fast",
-    "easy"
+    "easy",
+    "lightweight"
   ],
   "license": "ISC",
   "main": "index.js",
@@ -41,5 +42,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "0.0.142"
+  "version": "0.0.2"
 }
