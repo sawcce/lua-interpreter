@@ -11,10 +11,22 @@ var functions = {
     }},
     type:{call:(arguments,scope)=>{
         return typeof parseArgument(arguments[0],scope)
+    }},
+    wait:{call: async (arguments,scope)=>{
+        let timeScale = parseArgument(arguments[1])
+        let length = parseArgument(arguments[0])
+        if(timeScale== undefined || timeScale == "s"){
+            return new Promise(resolve => setTimeout(resolve,length*1000,scope));
+        }else if(timeScale== "ms"){
+            return new Promise(resolve => setTimeout(resolve, length,scope));
+        }
     }}
 }
 
 function parseArgument(argument,scope){
+    if(argument == undefined){
+        return undefined;
+    }
     let current;
         switch(argument.type){
             case "Identifier":
@@ -130,7 +142,7 @@ function parseExpression(expression,scope){
     }
 }
 
-function executeBlock(block,scope){
+async function executeBlock(block,scope){
     //console.log("scope block" +JSON.stringify(scope))
     switch(block.type){
         case "CallStatement":
@@ -139,7 +151,7 @@ function executeBlock(block,scope){
                 case "CallExpression":
                     let CallExpressionBlock = CallStatementBlockExpression
                     if(functions[CallExpressionBlock.base.name]){
-                        functions[CallExpressionBlock.base.name].call(CallExpressionBlock.arguments,scope)
+                        await functions[CallExpressionBlock.base.name].call(CallExpressionBlock.arguments,scope)
                     }
                     break;
             }
@@ -225,7 +237,7 @@ async function executeBlocks(blocks,scope){
         if(scope == undefined){
             scope = {}
         }
-        let resultScope = executeBlock(block,scope)
+        let resultScope = await executeBlock(block,scope)
         if(resultScope != undefined) {
             if(resultScope.scope != undefined){
                 scope = {...scope, ...resultScope.scope}
@@ -238,10 +250,12 @@ async function executeBlocks(blocks,scope){
 }
 
 module.exports = {
-    interpret: (code, methods)=>{
+    interpret: async (code, methods)=>{
         var body = code.body
-        executeBlocks(body,{})
         functions = {...functions, ...methods}
+        return new Promise((resolve,reject)=>{ 
+            resolve(executeBlocks(body,{}));
+        })
     }
 
 }
