@@ -69,6 +69,9 @@ Use :
 
 A block can be for example a function call from luaparse
 
+# Contribute to the project
+
+Check out the github repo !
 
 
 
