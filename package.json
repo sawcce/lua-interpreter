@@ -1,0 +1,45 @@
+{
+  "_from": "lua-interpreter@0.0.142",
+  "_id": "lua-interpreter@0.0.142",
+  "_inBundle": false,
+  "_integrity": "sha512-lMjj6f4dPUPWrooZfmHC5C2RDg0J/Kt2OfYVBMjsfDN+Bpl/qLpA1W0pWTi7onBJqcaA4ONFWVkts4X6v4O33Q==",
+  "_location": "/lua-interpreter",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "lua-interpreter@0.0.142",
+    "name": "lua-interpreter",
+    "escapedName": "lua-interpreter",
+    "rawSpec": "0.0.142",
+    "saveSpec": null,
+    "fetchSpec": "0.0.142"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/lua-interpreter/-/lua-interpreter-0.0.142.tgz",
+  "_shasum": "4abe2a034c49200cf85d0b962e00dd92aafe92ae",
+  "_spec": "lua-interpreter@0.0.142",
+  "_where": "D:\\Devlopment",
+  "author": {
+    "name": "Sawcce"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A lua interpreter for js ",
+  "keywords": [
+    "lua",
+    "luaparse",
+    "interpreter",
+    "fast",
+    "easy"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "lua-interpreter",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.142"
+}
